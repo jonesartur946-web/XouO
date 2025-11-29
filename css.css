@@ -1,4 +1,6 @@
-/* Reset básico */
+/* ============================= */
+/* RESET BÁSICO */
+/* ============================= */
 * {
     margin: 0;
     padding: 0;
@@ -9,32 +11,13 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #fff;
     color: #000;
+    overflow-x: hidden;
 }
 
-/* Overlay de carregamento */
-#loadingOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 2rem;
-    z-index: 9999;
-}
-
-/* Conteúdo principal */
-.siteContent {
-    display: block;
-    padding: 20px;
-}
-
-/* Navegação */
-nav {
+/* ============================= */
+/* NAVEGAÇÃO COMUM */
+/* ============================= */
+nav, nav#nav {
     width: 100%;
     background-image: linear-gradient(rgb(42, 63, 185), rgb(19, 35, 124), rgb(1, 5, 27));
     position: fixed;
@@ -43,16 +26,17 @@ nav {
     z-index: 100;
 }
 
-nav ul {
+nav ul, nav#nav ul {
     display: flex;
-    gap: 10px;
-    padding: 0.5rem 1rem;
-    list-style: none;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 10px;
 }
 
-nav ul li, nav ul li a {
+nav ul li, nav ul li a,
+nav#nav ul li, nav#nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -60,11 +44,13 @@ nav ul li, nav ul li a {
     cursor: pointer;
 }
 
-/* Formulário */
+/* ============================= */
+/* FORMULÁRIO INDEX / JOGO */
+/* ============================= */
 form {
     width: 95%;
     max-width: 400px;
-    margin: 80px auto 20px auto;
+    margin: 120px auto 20px auto;
     padding: 20px;
     text-align: center;
     background-color: rgba(240, 240, 240, 0.95);
@@ -105,9 +91,11 @@ input {
     background-color: rgb(4, 56, 3);
 }
 
-/* Container da tabela do jogo */
+/* ============================= */
+/* TABELA DO JOGO */
+/* ============================= */
 .tableContainer {
-    display: none; /* será exibido via JS quando o site carregar */
+    display: none; /* será exibido via JS */
     max-width: 400px;
     margin: 20px auto;
     padding: 10px;
@@ -117,6 +105,7 @@ table {
     width: 100%;
     height: auto;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 td {
@@ -126,6 +115,7 @@ td {
     text-align: center;
     box-shadow: 0px 1px 7px rgba(0,0,0,0.4);
     cursor: pointer;
+    border: 1px groove black;
 }
 
 td:hover {
@@ -143,13 +133,6 @@ td:hover {
     display: none;
 }
 
-/* Sons do jogo escondidos */
-video#somDoJogo,
-video#somDeVitoria,
-video#SomDeespanto {
-    display: none;
-}
-
 /* Relógio e orientações */
 .relogio {
     font-size: 1.5rem;
@@ -161,14 +144,101 @@ video#SomDeespanto {
     margin-bottom: 10px;
 }
 
-/* Responsividade mobile */
-@media (max-width: 685px) {
+/* Sons do jogo escondidos */
+video#somDoJogo,
+video#somDeVitoria,
+video#SomDeespanto {
+    display: none;
+}
 
+/* ============================= */
+/* PÁGINA DESENVOLVIDOR */
+/* ============================= */
+
+/* Vídeo de fundo */
+#vidBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Container principal */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 120px auto 0 auto;
+}
+
+/* Vídeo do perfil */
+#vid {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+#vid video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Conteúdo de texto */
+#conteudo-texto h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#conteudo-texto p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+#conteudo-texto p strong {
+    color: rgb(74, 152, 253);
+}
+
+/* Botões */
+.btn {
+    background-color: rgb(11, 107, 233);
+    color: #fff;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 80%;
+    max-width: 250px;
+}
+
+.btn:hover {
+    background-color: rgb(5, 52, 112);
+}
+
+/* ============================= */
+/* RESPONSIVIDADE */
+/* ============================= */
+@media(max-width: 685px) {
     body {
         text-align: center;
     }
 
-    nav ul {
+    nav ul, nav#nav ul {
         flex-direction: column;
         gap: 5px;
     }
@@ -183,42 +253,51 @@ video#SomDeespanto {
     }
 
     form {
-        margin-top: 120px;
+        margin-top: 150px;
         padding: 15px;
     }
 
     .tableContainer {
         max-width: 300px;
     }
+
+    #vid {
+        width: 180px;
+        height: 180px;
+    }
+
+    #conteudo-texto h1 {
+        font-size: 1.5rem;
+    }
+
+    #conteudo-texto p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .btn {
+        width: 90%;
+    }
 }
 
-/* Responsividade maior que 685px */
-@media (min-width: 686px) {
+@media(min-width: 686px) {
+    .profile {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 2rem;
+    }
+
+    #conteudo-texto {
+        max-width: 600px;
+    }
 
     #vid {
         width: 220px;
         height: 220px;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-    }
-
-    #vidBackground {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -2;
-    }
-
-    .profile {
-        position: absolute;
-        bottom: 10%;
-        left: 40%;
-        color: #fff;
     }
 
     .btn {
-        position: relative;
-        margin: 0;
-        width: 100%;
+        width: auto;
     }
 }
