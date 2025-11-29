@@ -4,66 +4,298 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo de X e O</title>
-    <link rel="stylesheet" href="./css.css">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: #fff;
+        }
+
+        nav {
+            width: 100%;
+            background-image: linear-gradient(rgb(42, 63, 185),rgb(19, 35, 124),rgb(1, 5, 27));
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 10px;
+            padding: 0.5rem 1rem;
+            list-style: none;
+        }
+
+        nav ul li {
+            padding: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 0.9rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 4px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 0.9rem;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            margin: 120px auto 20px auto;
+            padding: 35px;
+            text-align: center;
+        }
+
+        form h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            padding: 4px;
+            text-align: center;
+        }
+
+        input {
+            font-size: 1rem;
+            padding: 10px;
+            display: block;
+            border: none;
+            border-bottom: 2px groove black;
+            font-family: fantasy;
+            width: 91%;
+            margin: 3px auto;
+        }
+
+        .buttonn {
+            border: none;
+            background-color: rgb(13, 119, 9);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 6px auto;
+            width: 92%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buttonn:hover {
+            background-color: rgb(4, 56, 3);
+        }
+
+        .tableContainer {
+            display: none;       
+            padding: 20px;
+            min-height: 200px;
+            position: relative;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            font-size: 3rem;
+            padding: 48px;
+            box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.541);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        td:hover {
+            background-color: rgba(0,255,0,0.2);
+        }
+
+        #overlay {
+            background-color: rgba(0, 0, 0, 0.014);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .relogio {
+            padding: 6px;
+            font-size: 2rem;
+        }
+
+        .orientador {
+            padding: 20px;
+        }
+
+        video#somDoJogo,
+        video#somDeVitoria,
+        video#SomDeespanto {
+            display: none;
+        }
+
+        /* Desenvolvidor */
+        #preto {
+            background-color: black;
+        }
+
+        /* Responsividade mobile */
+        @media(max-width: 685px) {
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: #fff;
+                text-align: center;
+            }
+
+            nav {
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 0.5rem 1rem;
+                border-radius: 10px;
+            }
+
+            #vid {
+                width: 180px;
+                height: 180px;
+            }
+
+            #conteudo-texto h1 {
+                font-size: 1.5rem;
+            }
+
+            #conteudo-texto p {
+                font-size: 0.9rem;
+            }
+
+            td {
+                padding: 10px;
+                font-size: 1.5rem;
+            }
+
+            input, .buttonn {
+                width: 95%;
+            }
+
+            form {
+                margin-top: 140px;
+                padding: 15px;
+            }
+
+            .tableContainer {
+                max-width: 300px;
+            }
+        }
+
+        /* Responsividade telas maiores */
+        @media(min-width: 686px) {
+            #vid {
+                width: 220px;
+                height: 220px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-bottom: 1rem;
+            }
+
+            #video {
+                margin-top: -20px;
+                width: 380px;
+                height: 255px;
+                border-radius: 50%;
+            }
+
+            .profile {
+                position: absolute;
+                bottom: 10%;
+                left: 40%;
+                color: #fff;
+            }
+
+            .btn {
+                position: relative;
+                margin: 0;
+                width: 100%;
+            }
+
+            #vidBackground {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -2;
+            }
+        }
+    </style>
 </head>
 <body>
     <!--ESSE FORM VAI SER RESPONSAVEL POR PEGAR O NOME DOS JOGADORES-->
- 
-   <nav>
-     <ul>
-         <li><a href="./html.htm">NOVO JOGO</a></li>
-        <li id="reniciar">RENICIAR</li>
-        <li><a href="./desenvolvidor.html">DESENVOLVIDOR</a></li>
-         <li><a href="./ajuda.htm">AJUDA</a></li>
-     </ul>
-   </nav>
-     <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
+    <nav>
+        <ul>
+            <li><a href="./html.htm">NOVO JOGO</a></li>
+            <li id="reniciar">RENICIAR</li>
+            <li><a href="./desenvolvidor.html">DESENVOLVIDOR</a></li>
+            <li><a href="./ajuda.htm">AJUDA</a></li>
+        </ul>
+    </nav>
     <form action="" id="frm">
-           <h2>BEM-VINDO AO JOGO DA VELHA</h2>
-          <input class="jogador1" type="text"  placeholder="NOME DO JOGADOR 1                            X" required>
-          <input  class="jogador2" type="text" name="" required placeholder="NOME DO JOGADOR 2                           O">
-          <button type="submit" class="buttonn">CONFIRMAR</button>
-        </form>
-        <hr>
-      
-   <div class="tableContainer">
-    <div class="relogio">00:00:00</div>
-    <div class="orientador">
-        <h3></h3>
-      </div>
-      <table>
-        <tr>
-            <td class="quadrado1"></td>
-            <td class="quadrado2"></td>
-            <td class="quadrado3"></td>
-        </tr>
-         <tr>
-            <td class="quadrado4"></td>
-            <td class="quadrado5"></td>
-            <td class="quadrado6"></td>
-        </tr>
-         <tr>
-            <td class="quadrado7"></td>
-            <td class="quadrado8"></td>
-            <td class="quadrado9"></td>
-        </tr>
-    </table>
-     <div id="overlay"></div>
-   </div>
-   <video loop autoplay id="somDoJogo">
-     <source src="./som do jogo/Sonic Mania OST - Studiopolis Act 1.mp4" >
-   </video>
-    <video  autoplay id="somDeVitoria">
-     <source src="./som do jogo/Efeitos sonoros de grito e comemoração.mp4" >
-   </video>
-    <video  autoplay id="SomDeespanto">
-     <source src="./som do jogo/🔊Som e Efeito Pequeno grupo feminino expressando admiração, dizendo OOOOH  para fundo de jogos (HD).mp4" >
-   </video>
+        <h2>BEM-VINDO AO JOGO DA VELHA</h2>
+        <input class="jogador1" type="text" placeholder="NOME DO JOGADOR 1 X" required>
+        <input class="jogador2" type="text" placeholder="NOME DO JOGADOR 2 O" required>
+        <button type="submit" class="buttonn">CONFIRMAR</button>
+    </form>
+
+    <div class="tableContainer">
+        <div class="relogio">00:00:00</div>
+        <div class="orientador"><h3></h3></div>
+        <table>
+            <tr>
+                <td class="quadrado1"></td>
+                <td class="quadrado2"></td>
+                <td class="quadrado3"></td>
+            </tr>
+            <tr>
+                <td class="quadrado4"></td>
+                <td class="quadrado5"></td>
+                <td class="quadrado6"></td>
+            </tr>
+            <tr>
+                <td class="quadrado7"></td>
+                <td class="quadrado8"></td>
+                <td class="quadrado9"></td>
+            </tr>
+        </table>
+        <div id="overlay"></div>
+    </div>
+
+    <video loop autoplay id="somDoJogo">
+        <source src="./som do jogo/Sonic Mania OST - Studiopolis Act 1.mp4">
+    </video>
+    <video autoplay id="somDeVitoria">
+        <source src="./som do jogo/Efeitos sonoros de grito e comemoração.mp4">
+    </video>
+    <video autoplay id="SomDeespanto">
+        <source src="./som do jogo/🔊Som e Efeito Pequeno grupo feminino expressando admiração, dizendo OOOOH  para fundo de jogos (HD).mp4">
+    </video>
+
+    <script src="./Js.js"></script>
 </body>
-<script src="./Js.js"></script>
 </html>
