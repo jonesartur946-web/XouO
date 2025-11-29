@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de X e O</title>
+    <link rel="stylesheet" href="./css.css">
+</head>
+<body>
+    <!--ESSE FORM VAI SER RESPONSAVEL POR PEGAR O NOME DOS JOGADORES-->
+ 
+   <nav>
+     <ul>
+         <li><a href="./html.htm">NOVO JOGO</a></li>
+        <li id="reniciar">RENICIAR</li>
+        <li><a href="./desenvolvidor.html">DESENVOLVIDOR</a></li>
+         <li><a href="./ajuda.htm">AJUDA</a></li>
+     </ul>
+   </nav>
+   <br>
+   <br>
+   <br>
+    <form action="" id="frm">
+           <h2>BEM-VINDO AO JOGO DA VELHA</h2>
+          <input class="jogador1" type="text"  placeholder="NOME DO JOGADOR 1                            X" required>
+          <input  class="jogador2" type="text" name="" required placeholder="NOME DO JOGADOR 2                           O">
+          <button type="submit" class="buttonn">CONFIRMAR</button>
+        </form>
+        <hr>
+      
+   <div class="tableContainer">
+    <div class="relogio">00:00:00</div>
+    <div class="orientador">
+        <h3></h3>
+      </div>
+      <table>
+        <tr>
+            <td class="quadrado1"></td>
+            <td class="quadrado2"></td>
+            <td class="quadrado3"></td>
+        </tr>
+         <tr>
+            <td class="quadrado4"></td>
+            <td class="quadrado5"></td>
+            <td class="quadrado6"></td>
+        </tr>
+         <tr>
+            <td class="quadrado7"></td>
+            <td class="quadrado8"></td>
+            <td class="quadrado9"></td>
+        </tr>
+    </table>
+     <div id="overlay"></div>
+   </div>
+   <video loop autoplay id="somDoJogo">
+     <source src="./som do jogo/Sonic Mania OST - Studiopolis Act 1.mp4" >
+   </video>
+    <video  autoplay id="somDeVitoria">
+     <source src="./som do jogo/Efeitos sonoros de grito e comemoração.mp4" >
+   </video>
+    <video  autoplay id="SomDeespanto">
+     <source src="./som do jogo/🔊Som e Efeito Pequeno grupo feminino expressando admiração, dizendo OOOOH  para fundo de jogos (HD).mp4" >
+   </video>
+</body>
+<script src="./Js.js"></script>
+</html>

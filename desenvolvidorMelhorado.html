@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DESENVOLVIDOR</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    nav {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+    }
+
+    nav ul li a, nav ul li {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Fundo vídeo */
+    #vidBackground {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Container central */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #vid {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    #video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #conteudo-texto h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #conteudo-texto p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .btn {
+      background: rgb(11, 107, 233);
+      color: #fff;
+      font-weight: bold;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 80%;
+      max-width: 250px;
+    }
+
+    .btn:hover {
+      background: rgb(5, 52, 112);
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      #conteudo-texto h1 {
+        font-size: 1.5rem;
+      }
+
+      #conteudo-texto p {
+        font-size: 0.9rem;
+      }
+
+      #vid {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <ul>
+      <li><a href="./html.htm">NOVO JOGO</a></li>
+      <li id="reniciar">RENICIAR</li>
+      <li><a href="./desenvolvidor.html">DESENVOLVIDOR</a></li>
+      <li><a href="./ajuda.htm">AJUDA</a></li>
+    </ul>
+  </nav>
+
+  <video id="vidBackground" autoplay loop muted>
+    <source src="./videos/Blue Neon Frame Background _ MD Animated Backgrounds _ Free Video Backgrounds.mp4">
+  </video>
+
+  <div class="profile">
+    <div id="vid">
+      <video id="video" autoplay loop muted>
+        <source src="./videos/para perfil.mp4">
+      </video>
+    </div>
+    <div id="conteudo-texto">
+      <h1>Jones José</h1>
+      <p>
+        Olá, <strong>chamo-me Jones José</strong>. Fiz esse pequeno jogo numa sexta-feira, pois estava 
+        entediado. Sou <strong>desenvolvidor</strong> com experiência <strong>em HTML, CSS e JS</strong>. Tenho
+        paixão por criar <strong>soluções digitais</strong> que unem design e tecnologia. Actualmente,
+        estou focado <strong>em desenvolvimento web e aplicações modernas</strong>.
+      </p>
+    </div>
+    <button class="btn">CONTACTAR</button>
+    <button class="btn">AVALIAR JOGO</button>
+  </div>
+
+  <script src="./Js.js"></script>
+</body>
+</html>
