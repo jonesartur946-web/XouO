@@ -10,7 +10,6 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #fff;
-    color: #000;
     overflow-x: hidden;
 }
 
@@ -99,32 +98,34 @@ input {
     max-width: 400px;
     margin: 20px auto;
     padding: 10px;
+    position: relative;
+    min-height: 200px;
 }
 
 table {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
 td {
     width: 33%;
-    padding: 25px;
-    font-size: 2rem;
+    padding: 48px;
+    font-size: 3rem;
     text-align: center;
-    box-shadow: 0px 1px 7px rgba(0,0,0,0.4);
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.541);
     cursor: pointer;
     border: 1px groove black;
 }
 
 td:hover {
-    background-color: rgba(0,255,0,0.2);
+    background-color: rgba(0, 255, 0, 0.2);
 }
 
-/* Overlay do jogo (quando necessário) */
+/* Overlay do jogo */
 #overlay {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.014);
     position: absolute;
     top: 0;
     left: 0;
@@ -133,29 +134,35 @@ td:hover {
     display: none;
 }
 
-/* Relógio e orientações */
-.relogio {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.orientador h3 {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
 /* Sons do jogo escondidos */
 video#somDoJogo,
 video#somDeVitoria,
 video#SomDeespanto {
-    display: none;
+    width: 1px;
+    height: 1px;
+}
+
+/* Relógio e orientações */
+.relogio {
+    padding: 6px;
+    font-size: 2rem;
+}
+
+.orientador {
+    padding: 20px;
+}
+
+.orientador h3 {
+    font-size: 1rem;
 }
 
 /* ============================= */
-/* PÁGINA DESENVOLVIDOR */
+/* DESENVOLVIDOR */
 /* ============================= */
+#preto {
+    background-color: black;
+}
 
-/* Vídeo de fundo */
 #vidBackground {
     position: fixed;
     top: 0;
@@ -166,7 +173,6 @@ video#SomDeespanto {
     z-index: -1;
 }
 
-/* Container principal */
 .profile {
     display: flex;
     flex-direction: column;
@@ -178,7 +184,6 @@ video#SomDeespanto {
     margin: 120px auto 0 auto;
 }
 
-/* Vídeo do perfil */
 #vid {
     width: 220px;
     height: 220px;
@@ -194,7 +199,6 @@ video#SomDeespanto {
     border-radius: 50%;
 }
 
-/* Conteúdo de texto */
 #conteudo-texto h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -205,13 +209,13 @@ video#SomDeespanto {
     line-height: 1.5;
     margin-bottom: 1.5rem;
     padding: 0 1rem;
+    color: #fff;
 }
 
 #conteudo-texto p strong {
     color: rgb(74, 152, 253);
 }
 
-/* Botões */
 .btn {
     background-color: rgb(11, 107, 233);
     color: #fff;
@@ -231,16 +235,58 @@ video#SomDeespanto {
 }
 
 /* ============================= */
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE PARA TELAS PEQUENAS */
 /* ============================= */
 @media(max-width: 685px) {
     body {
         text-align: center;
+        color: #fff;
     }
 
-    nav ul, nav#nav ul {
-        flex-direction: column;
-        gap: 5px;
+    nav {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        background-color: transparent;
+    }
+
+    nav ul {
+        gap: 1rem;
+        background: rgba(0,0,0,0.5);
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+    }
+
+    #vid {
+        width: 180px;
+        height: 180px;
+    }
+
+    #video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    #conteudo-texto h1 {
+        font-size: 1.5rem;
+    }
+
+    #conteudo-texto p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .profile {
+        max-width: 300px;
+        padding: 2rem 1rem;
+        margin: 120px auto 0 auto;
+    }
+
+    .btn {
+        width: 90%;
     }
 
     td {
@@ -260,26 +306,11 @@ video#SomDeespanto {
     .tableContainer {
         max-width: 300px;
     }
-
-    #vid {
-        width: 180px;
-        height: 180px;
-    }
-
-    #conteudo-texto h1 {
-        font-size: 1.5rem;
-    }
-
-    #conteudo-texto p {
-        font-size: 0.9rem;
-        padding: 0 10px;
-    }
-
-    .btn {
-        width: 90%;
-    }
 }
 
+/* ============================= */
+/* RESPONSIVIDADE PARA TELAS MAIORES */
+/* ============================= */
 @media(min-width: 686px) {
     .profile {
         flex-direction: row;
@@ -288,16 +319,50 @@ video#SomDeespanto {
         gap: 2rem;
     }
 
-    #conteudo-texto {
-        max-width: 600px;
+    #vid {
+        width: 238px;
+        height: 190px;
+        padding-bottom: 18px;
+        padding-right: 4px;
     }
 
-    #vid {
-        width: 220px;
-        height: 220px;
+    #video {
+        width: 380px;
+        height: 255px;
+        margin-top: -20px;
+    }
+
+    #vidBackground {
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+    }
+
+    .profile {
+        position: absolute;
+        bottom: 10%;
+        left: 40%;
+        color: #fff;
     }
 
     .btn {
-        width: auto;
+        position: relative;
+        bottom: -60px;
+        left: -29%;
+        width: 100%;
+    }
+
+    #conteudo-texto h1 {
+        font-size: 1.8rem;
+        position: relative;
+        left: 48px;
+    }
+
+    #conteudo-texto p {
+        top: 90%;
+        left: -30%;
+        right: 30%;
+        font-size: 1.2rem;
+        padding: 0 10px;
     }
 }
